@@ -8,12 +8,6 @@ function Circle ({color, selected, onClick}) {
     return (
         <div className={`circle ${color} ${light} ${selected}`} onClick={onClick} ></div>
         );
-    
-    /*const [light, setLight] = useState("");
-    
-    return (
-    <div className={`circle ${color} ${light}`} onClick={() => light==""? setLight("lightOn"):setLight("")}></div>
-    );*/
 };
 
 export default Circle;
