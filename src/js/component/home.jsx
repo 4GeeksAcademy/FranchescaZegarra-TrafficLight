@@ -9,6 +9,8 @@ const Home = () => {
 	const [selectedCircle, setSelectedCircle]= useState(0);
 	const [textBottonOne, setTextBottonOne] = useState("Start to control traffic");
 	const [colorBottonOne, setColorBottonOne] = useState("btn-success")
+	const [textBottonTwo, setTextBottonTwo] = useState("Show purple light");
+	const [showComponent, setShowComponent] =useState(false);
 
 	function circleClick(number) {
 		setSelectedCircle(number);	
@@ -38,18 +40,25 @@ const Home = () => {
 		}
 	}
 
+	function hideOrShow(){
+		setShowComponent(!showComponent);
+		textBottonTwo=="Show purple light" ? setTextBottonTwo("Hide purple light") : setTextBottonTwo("Show purple light");
+		setSelectedCircle(4);
+	}
+
 	return (
 		<>
 			<Container>
 				<Circle color="red" selected={selectedCircle==1} onClick = {() => selectedCircle==1?circleClick(0):circleClick(1)} />
 				<Circle color="yellow" selected={selectedCircle==2} onClick = {() => selectedCircle==2?circleClick(0):circleClick(2)}/>
 				<Circle color="green" selected={selectedCircle==3} onClick = {() => selectedCircle==3?circleClick(0):circleClick(3)}/>
+				{showComponent ? <Circle color="purple" selected={selectedCircle==4} onClick = {() => selectedCircle==4?circleClick(0):circleClick(4)}/>: <></>}
 			</Container>
-			<div className="d-flex justify-content-center mt-5">
+			<div className="d-flex justify-content-center">
 				<Button text={textBottonOne} color={colorBottonOne} onClick={() => nextColor()}/>
+				<Button text={textBottonTwo} color={"btn-secondary"} onClick={() => hideOrShow()}/>
 			</div>
 		</>
-		
 	);
 };
 
